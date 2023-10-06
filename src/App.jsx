@@ -1,33 +1,64 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
+import LoadingScreen from './components/LoadingScreen'
+import ScoreCard from './components/ScoreCard'
+import Cards from './components/Cards'
+
 function App() {
-  const [count, setCount] = useState(0)
+  const [isLoading, setIsLoading] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
+  const [score, setScore] = useState(0);
+  const [clickedCards, setClickedCards] = useState([]);
+  const [hasWinner, setHasWinner] = useState(false)
+
+const handleGameStart = () => {
+  setIsLoading(false);
+  setGameOver(false);
+}
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    {
+      //Screen is still Loading?
+      isLoading? (
+        <LoadingScreen
+          handleGameStart = {handleGameStart}
+        />
+      ) : (
+        <div>
+          {
+            //Game is not over?
+            !gameOver? (
+              <div>
+                <ScoreCard
+                  score={score}
+                />
+                <Cards/>
+              </div>
+            ) : (
+              <div>
+              {
+                //Game has winner?
+                hasWinner? (
+                  <div>
+                    <h2>Congrtulations!</h2>
+                    <button>Restart</button>
+                  </div>
+                ) : (
+                  <div>
+                    <h2>Unfortunately You Lose!</h2>
+                    <button>Restart</button>
+                  </div>
+                )
+              }
+              </div>
+            )
+          }
+        </div>
+      )
+    }
+      
     </>
   )
 }
