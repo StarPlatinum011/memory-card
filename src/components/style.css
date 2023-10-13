@@ -1,0 +1,61 @@
+.main-card {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    background-color: #1e1e1e;
+    color: #fff;
+    border-radius: 1%;
+}
+
+.player-card {
+    margin: 1rem;
+    
+}
+
+.player-card> img {
+    width: 16rem;
+    height: 18rem;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+
+}
+
+.player-card img:hover {
+    transform: scale(1.05); /* Optional: Enlarge the image on hover */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.score-board {
+    color: #1e1e1e;
+    width: max-content;
+    padding: 0 2px;
+    margin-bottom: 1rem;
+}
+
+.winner-message {
+    background-color: #1e1e1e;
+    padding: 3rem 6rem;
+    border-radius: 4%;
+    
+}
+.winner-message h2 {
+    color: #fff;
+}
+
+.loser-message {
+    background-color: #1e1e1e;
+    padding: 3rem 6rem;
+    border-radius: 4%;
+}
+.loser-message h2 {
+    color: #fff;
+}
+
+.loading-screen {
+    background-color: #fff;
+    padding: 4rem;
+    border-radius: 3%;
+}
+.loading-screen button {
+    border-color: #2196F3;
+}

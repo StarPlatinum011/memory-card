@@ -29,6 +29,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: url('./assets/background.jpg') no-repeat center fixed;
+  background-size: cover;
 }
 
 h1 {
